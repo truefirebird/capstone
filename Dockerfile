@@ -1,7 +1,3 @@
-
-##Simple Copy
-COPY index.html /var/www/html/
-
 FROM jenkins/jenkins:lts
 USER root
 RUN apt-get update && \
@@ -21,3 +17,6 @@ RUN apt-get install -y docker-ce
 RUN usermod -a -G docker jenkins
 USER jenkins
 
+
+##Simple Copy
+COPY index.html /var/www/html/
