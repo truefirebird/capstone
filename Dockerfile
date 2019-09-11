@@ -1,10 +1,10 @@
 From nginx
-FROM jenkins/jenkins:lts
 
+RUN rm /usr/share/nginx/html/index.html.bkp
 COPY index.html /usr/share/nginx/html/
 
 
-
+FROM jenkins/jenkins:lts
 USER root
 RUN apt-get update && \
 apt-get -y install apt-transport-https \
@@ -24,5 +24,4 @@ RUN usermod -a -G docker jenkins
 USER jenkins
 
 
-##Simple Copy
-COPY index.html /var/www/html/
+
