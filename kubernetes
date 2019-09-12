@@ -14,8 +14,8 @@ pipeline {
       --nodes-min 1 \
       --nodes-max 2 \
       --node-ami auto \
-      --ssh-access true \
-      --ssh-public-key pipeline
+      --ssh-access=true \
+      --ssh-public-key=pipeline
       
       
      '''
