@@ -1,7 +1,6 @@
 FROM nginx
 
-RUN rm /usr/share/nginx/html/index.html.bkp
-COPY index.html /usr/share/nginx/html/
+COPY index.html /var/www//html/
 
 
 FROM jenkins/jenkins:lts
