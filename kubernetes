@@ -24,7 +24,7 @@ pipeline {
   }
   stage('Generate Config Files for Blue') {
       steps{
-        sh "aws eks update-kubeconfig --name prodblue --region us-west-2"
+        sh " aws eks --region us-west-2 update-kubeconfig --name prodblue"
       }
     }
   
