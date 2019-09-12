@@ -1,0 +1,30 @@
+pipeline {
+  agent any
+  stages {
+   stage('Create blue kubernetes cluster') {
+   steps {
+    withAWS(region:'us-west-2', credentials:'aws-static') {
+     sh '''
+      eksctl create cluster \
+      --name prodblue \
+      --version 1.13 \
+      --nodegroup-name standard-workers \
+      --node-type t2.micro \
+      --nodes 1 \
+      --nodes-min 1 \
+      --nodes-max 2 \
+      --node-ami auto
+      
+     '''
+    }
+   }
+  }
+  stage('Generate Config Files for Blue') {
+      steps{
+        sh "aws eks update-kubeconfig --name prodblue --region us-west-2"
+      }
+    }
+  
+    
+  }
+}
