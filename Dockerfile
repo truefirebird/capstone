@@ -5,7 +5,7 @@
 
 ##EXPOSE 80
 
-RUN touch anand.txt
+CMD touch anand.txt
 
 
 ##FROM jenkins/jenkins:lts
