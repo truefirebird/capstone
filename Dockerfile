@@ -1,9 +1,12 @@
-FROM nginx
+##FROM nginx
 
-COPY index.html /var/www/html/
-COPY index.html /usr/share/nginx/html
+##COPY index.html /var/www/html/
+##COPY index.html /usr/share/nginx/html
 
-EXPOSE 80
+##EXPOSE 80
+
+FROM nginx:alpine
+COPY index.html /usr/share/nginx/html/index.html
 
 
 ##FROM jenkins/jenkins:lts
