@@ -1,7 +1,7 @@
 fROM nginx
 
-COPY index.htm /var/www/html/
-COPY index.htm /usr/share/nginx/html
+COPY index.html /var/www/html/
+COPY index.html /sr/share/nginx/html
 
 EXPOSE 80
 
