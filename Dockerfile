@@ -1,9 +1,11 @@
-FROM nginx
+##FROM nginx
 
-COPY index.html /var/www/html/
-COPY index.html /usr/share/nginx/html
+##COPY index.html /var/www/html/
+##COPY index.html /usr/share/nginx/html
 
 ##EXPOSE 80
+
+RUN touch anand.txt
 
 
 ##FROM jenkins/jenkins:lts
