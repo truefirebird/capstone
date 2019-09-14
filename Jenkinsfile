@@ -19,7 +19,8 @@ pipeline {
    steps {
     withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'anandraman7978', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
      sh '''
-      docker build -t anandraman7978/jenkins-docker2:$BUILD_ID .
+      docker build --tag=testblueimage .
+      docker run -p 8000:80 testblueimage
      '''
     }
    }
@@ -29,7 +30,8 @@ pipeline {
         withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'anandraman7978', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
      sh '''
       docker login -u anandraman7978 -p Panther@12
-      docker push anandraman7978/jenkins-docker2:$BUILD_ID
+      docker tag testblueimage anandraman7978/testblueimage
+      docker push anandraman7978/testblueimage
      '''
     
     }
