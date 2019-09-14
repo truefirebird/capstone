@@ -5,4 +5,6 @@
 
 ## Step 2:
 # Copy source code to working directory
+
+FROM ubuntu:18.04
 COPY index.html /home/ubuntu
