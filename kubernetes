@@ -6,14 +6,14 @@ pipeline {
     withAWS(region:'us-west-2', credentials:'aws-static') {
      sh '''
       eksctl create cluster \
-      --name testblue \
+      --name prodtestblue \
       --version 1.13 \
       --nodegroup-name standard-workers \
       --node-type t2.micro \
       --nodes 1 \
       --nodes-min 1 \
       --nodes-max 2 \
-      --node-ami auto \
+      --node-ami ami-06f2f779464715dc5 \
       --ssh-access=true \
       --ssh-public-key=pipeline
       
@@ -24,7 +24,7 @@ pipeline {
   }
   stage('Generate Config Files for Blue') {
       steps{
-        sh " aws eks --region us-west-2 update-kubeconfig --name testblue"
+        sh " aws eks --region us-west-2 update-kubeconfig --name prodtestblue"
       }
     }
   
