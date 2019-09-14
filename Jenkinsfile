@@ -37,14 +37,7 @@ pipeline {
     }
     }
     }
-    stage('Set Context') {
-      steps {
-        sh '''
-          kubectl config current-context
-          kubectl apply -f ./blue-controller.json
-      }
-    }
-        
+           
 
     
   }
