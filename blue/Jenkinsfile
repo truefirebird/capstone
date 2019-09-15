@@ -18,21 +18,14 @@ pipeline {
     stage('Build Docker Image') {
    steps {
     withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'anandraman7978', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
-     sh '''
-      docker build --tag=testblueimage .
-      docker run -p 8000:80 testblueimage
-     '''
+     sh './run_docker.sh'
     }
    }
   }
     stage('Deploy Image') {
         steps {
         withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'anandraman7978', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
-     sh '''
-      docker login -u anandraman7978 -p Panther@12
-      docker tag testblueimage anandraman7978/testblueimage
-      docker push anandraman7978/testblueimage
-     '''
+     sh './upload_docker.sh'
     
     }
     }
