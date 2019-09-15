@@ -13,6 +13,3 @@ FROM nginx
  VOLUME /usr/share/nginx/html
  
  EXPOSE 8000
-
- 
-
