@@ -9,10 +9,10 @@ pipeline {
       --name prodteblue \
       --version 1.13 \
       --nodegroup-name standard-workers \
-      --node-type t2.micro \
-      --nodes 1 \
+      --node-type t3.medium \
+      --nodes 2 \
       --nodes-min 1 \
-      --nodes-max 2 \
+      --nodes-max 4 \
       --node-ami auto \
       --ssh-access=true \
       --ssh-public-key=pipeline
