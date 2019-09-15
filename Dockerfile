@@ -4,4 +4,4 @@ FROM nginx
 
  VOLUME /usr/share/nginx/html
  
- EXPOSE 80
+ ##EXPOSE 80
