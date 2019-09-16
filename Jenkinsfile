@@ -19,8 +19,9 @@ pipeline {
    steps {
     withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'anandraman7978', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
      sh '''
-       chmod 777 blue/run_docker.sh
-      ./blue/run_docker.sh '''
+       cd green
+       chmod 777 run_docker.sh
+      ./run_docker.sh '''
     }
    }
   }
@@ -28,7 +29,7 @@ pipeline {
         steps {
         withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'anandraman7978', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
      sh '''
-        cd blue
+        cd green
         chmod 777 upload_docker.sh
         ./upload_docker.sh'''
     
@@ -39,7 +40,7 @@ pipeline {
         steps {
              withAWS(region:'us-west-2', credentials:'aws-static') {
             sh '''
-            cd blue
+            cd green
             chmod 777 run_kubernetes.sh
             ./run_kubernetes.sh '''
              }
@@ -49,7 +50,7 @@ pipeline {
         steps {
              withAWS(region:'us-west-2', credentials:'aws-static') {
             sh '''
-            cd blue
+            cd green
             chmod 777 run-kube-serv.sh
             ./run-kube-serv.sh 
             kubectl get services
