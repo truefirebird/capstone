@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    registry = "anandraman7978/testblueimage"
+    registry = "anandraman7978/testgreenimage"
     registryCredential = 'anandraman7978'
   }
   agent any
