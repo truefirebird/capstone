@@ -7,7 +7,7 @@ pipeline {
   stages {
     stage('Cloning Git') {
       steps {
-        git 'https://github.com/anandraman7978/blue_green_implementation'
+        git 'https://github.com/anandraman7978/capstone.git'
       }
     }
     stage ('Initialize') {
@@ -19,8 +19,8 @@ pipeline {
    steps {
     withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'anandraman7978', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
      sh '''
-       chmod 777 blue\run_docker.sh
-      .blue/run_docker.sh '''
+       chmod 777 blue/run_docker.sh
+      ./blue/run_docker.sh '''
     }
    }
   }
