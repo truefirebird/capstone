@@ -7,7 +7,7 @@ pipeline {
   stages {
     stage('Cloning Git') {
       steps {
-        git 'https://github.com/anandraman7978/capstone.git'
+        git 'https://github.com/anandraman7978/blue_green_implementation'
       }
     }
     stage ('Initialize') {
@@ -19,9 +19,8 @@ pipeline {
    steps {
     withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'anandraman7978', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
      sh '''
-      docker build --tag=testblueimage .
-      docker run -p 8000:80 testblueimage
-     '''
+      chmod 777 run_docker.sh
+      ./run_docker.sh '''
     }
    }
   }
@@ -29,15 +28,32 @@ pipeline {
         steps {
         withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'anandraman7978', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
      sh '''
-      docker login -u anandraman7978 -p Panther@12
-      docker tag testblueimage anandraman7978/testblueimage
-      docker push anandraman7978/testblueimage
-     '''
+        chmod 777 upload_docker.sh
+        ./upload_docker.sh'''
     
     }
     }
     }
-           
+    stage('Create Replication Controller') {
+        steps {
+             withAWS(region:'us-west-2', credentials:'aws-static') {
+            sh '''
+            chmod 777 run_kubernetes.sh
+            ./run_kubernetes.sh '''
+             }
+        }
+    }
+    stage('Change Service') {
+        steps {
+             withAWS(region:'us-west-2', credentials:'aws-static') {
+            sh '''
+            chmod 777 run-kube-serv.sh
+            ./run-kube-serv.sh 
+            kubectl get services
+            '''
+             }
+        }
+    }
 
     
   }
