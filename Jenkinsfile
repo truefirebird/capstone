@@ -25,6 +25,16 @@ pipeline {
     }
    }
   }
+    stage('Build Docker Image') {
+   steps {
+    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'anandraman7978', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
+     sh '''
+       cd green
+       chmod 777 run_docker.sh
+      ./run_docker.sh '''
+    }
+   }
+  }
     stage('Deploy Image') {
         steps {
         withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'anandraman7978', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
@@ -36,11 +46,32 @@ pipeline {
     }
     }
     }
+    stage('Deploy Image') {
+        steps {
+        withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'anandraman7978', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
+     sh '''
+        cd green
+        chmod 777 upload_docker.sh
+        ./upload_docker.sh'''
+    
+    }
+    }
+    }
     stage('Create Replication Controller') {
         steps {
              withAWS(region:'us-west-2', credentials:'aws-static') {
             sh '''
             cd blue
+            chmod 777 run_kubernetes.sh
+            ./run_kubernetes.sh '''
+             }
+        }
+    }
+      stage('Create Replication Controller') {
+        steps {
+             withAWS(region:'us-west-2', credentials:'aws-static') {
+            sh '''
+            cd green
             chmod 777 run_kubernetes.sh
             ./run_kubernetes.sh '''
              }
