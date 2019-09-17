@@ -1,4 +1,4 @@
-pipeline {
+pipelin {
   environment {
     registry = "anandraman7978/testblueimage"
     registryCredential = 'anandraman7978'
