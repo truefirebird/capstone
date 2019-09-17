@@ -10,11 +10,6 @@ pipeline {
         git 'https://github.com/anandraman7978/capstone.git'
       }
     }
-    #stage ('Initialize') {
-    #  steps {
-    #    echo 'Placeholder.'
-    #  }
-    #}
     stage('Build Docker Image Blue') {
    steps {
     withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'anandraman7978', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
