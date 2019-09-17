@@ -94,7 +94,7 @@ pipeline {
                 input "Does the staging environment look ok?"
             }
         }
-    stage('Change Service Blue') {
+    stage('Change Service Green') {
         steps {
              withAWS(region:'us-west-2', credentials:'aws-static') {
             sh '''
