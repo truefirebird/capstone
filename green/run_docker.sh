@@ -12,6 +12,6 @@ docker image ls
 
 # Step 3: 
 # Run flask app
-#docker stop $(docker ps -a -q)
-#docker rm $(docker ps -a -q)
-#docker run -p 8000:80 testgreenimage
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+docker run -p 8000:80 testgreenimage
