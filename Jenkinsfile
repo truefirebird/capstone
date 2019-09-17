@@ -89,6 +89,23 @@ pipeline {
              }
         }
     }
+    stage('Sanity check') {
+            steps {
+                input "Does the staging environment look ok?"
+            }
+        }
+    stage('Change Service Blue') {
+        steps {
+             withAWS(region:'us-west-2', credentials:'aws-static') {
+            sh '''
+            cd green
+            chmod 777 run-kube-serv.sh
+            ./run-kube-serv.sh 
+            kubectl get services
+            '''
+             }
+        }
+    }
 
     
   }
