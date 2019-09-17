@@ -20,7 +20,7 @@ pipeline {
     withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'anandraman7978', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
      sh '''
        cd blue
-       chmo 777 run_docker.sh
+       chmod 777 run_docker.sh
       ./run_docker.sh '''
     }
    }
