@@ -4,7 +4,7 @@
 
 # Step 1:
 # Build image and add a descriptive tag
-docker build --tag=testbimage .
+docker build --tag=testblueimage .
 
 # Step 2: 
 # List docker images
@@ -14,4 +14,4 @@ docker image ls
 # Run flask app
 docker stop $(docker ps -a -q)
 docker rm $(docker ps -a -q)
-docker run -p 8000:80 testbimage
+docker run -p 8000:80 testblueimage
