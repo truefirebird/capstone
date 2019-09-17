@@ -15,7 +15,7 @@ pipeline {
         echo 'Placeholder.'
       }
     }
-    stage('Build Docker Image') {
+    stage('Build Docker Image Blue') {
    steps {
     withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'anandraman7978', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
      sh '''
@@ -25,7 +25,7 @@ pipeline {
     }
    }
   }
-    stage('Build Docker Image') {
+    stage('Build Docker Image Green') {
    steps {
     withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'anandraman7978', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
      sh '''
@@ -35,7 +35,7 @@ pipeline {
     }
    }
   }
-    stage('Deploy Image') {
+    stage('Deploy Image Blue') {
         steps {
         withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'anandraman7978', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
      sh '''
@@ -46,7 +46,7 @@ pipeline {
     }
     }
     }
-    stage('Deploy Image') {
+    stage('Deploy Image Green') {
         steps {
         withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'anandraman7978', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
      sh '''
@@ -57,7 +57,7 @@ pipeline {
     }
     }
     }
-    stage('Create Replication Controller') {
+    stage('Create Replication Controller Blue') {
         steps {
              withAWS(region:'us-west-2', credentials:'aws-static') {
             sh '''
@@ -67,7 +67,7 @@ pipeline {
              }
         }
     }
-      stage('Create Replication Controller') {
+      stage('Create Replication Controller Green') {
         steps {
              withAWS(region:'us-west-2', credentials:'aws-static') {
             sh '''
@@ -77,7 +77,7 @@ pipeline {
              }
         }
     }
-    stage('Change Service') {
+    stage('Change Service Blue') {
         steps {
              withAWS(region:'us-west-2', credentials:'aws-static') {
             sh '''
