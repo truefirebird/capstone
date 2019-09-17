@@ -1,4 +1,4 @@
-pipelin {
+pipeline {
   environment {
     registry = "anandraman7978/testblueimage"
     registryCredential = 'anandraman7978'
@@ -20,7 +20,7 @@ pipelin {
     withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'anandraman7978', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
      sh '''
        cd blue
-       chmod 777 run_docker.sh
+       chmo 777 run_docker.sh
       ./run_docker.sh '''
     }
    }
