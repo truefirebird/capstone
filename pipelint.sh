@@ -6,7 +6,7 @@ JENKINS_USER=anandraman
 JENKINS_USER_KEY=11e9f9c645d93a941e38d5d95c552008f3
 
 # Url for my local Jenkins instance.
-JENKINS_URL=http://$JENKINS_USER:$JENKINS_USER_KEY@localhost:32769 
+JENKINS_URL=http://$JENKINS_USER:$JENKINS_USER_KEY@localhost:8080
 
 # JENKINS_CRUMB is needed if your Jenkins master has CRSF protection enabled (which it should)
 JENKINS_CRUMB=`curl "$JENKINS_URL/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,\":\",//crumb)"`
