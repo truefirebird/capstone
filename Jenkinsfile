@@ -12,7 +12,8 @@ pipeline {
         chmod 777 pipelint.sh
         ./pipelint.sh'''
       }
-  } 
+    } 
+  }
   stages {
     stage ('Initialize') {
       steps {
