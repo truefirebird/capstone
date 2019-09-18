@@ -15,9 +15,9 @@ pipeline {
       }
     }
     
-    stage('Cloning Gi') {
+    stage('Cloning Git') {
       steps {
-        git 'https://github.com/anandraman7978/capstone.git'
+        git 'https://github.com/anandraman7978/capstone.gi'
       }
     }
     
