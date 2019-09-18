@@ -15,14 +15,7 @@ pipeline {
     } 
   }
   stages {
-    stage ('Initialize') {
-      steps {
-        sh '''
-        chmod 777 pipelint.sh
-        ./pipelint.sh'''
-      }
-    }
-    
+       
     stag('Cloning Git') {
       steps {
         git 'https://github.com/anandraman7978/capstone.git'
