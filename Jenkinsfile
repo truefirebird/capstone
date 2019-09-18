@@ -17,10 +17,10 @@ pipeline {
       steps {
         sh '''
        cd blue
-        docker --ignore DL3006 run --rm -i hadolint/hadolint:latest < Dockerfile
+        docker run --rm -i hadolint/hadolint --ignore DL3006 < Dockerfile
        cd ..
        cd green
-        docker --ignore DL3006 run --rm -i hadolint/hadolint:latest < Dockerfile'''
+        docker run --rm -i hadolint/hadolint --ignore DL3006 < Dockerfile'''
       }
     } 
     
