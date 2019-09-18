@@ -9,7 +9,7 @@ pipeline {
     buildDiscarder(logRotator(numToKeepStr:'10'))
   }
   stages {
-    stage('Cloning Git') {
+    stag('Cloning Git') {
       steps {
         git 'https://github.com/anandraman7978/capstone.git'
       }
