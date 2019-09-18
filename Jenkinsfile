@@ -3,7 +3,7 @@ pipeline {
     registry = "anandraman7978/testblueimage"
     registryCredential = 'anandraman7978'
   }
-  agent an
+  agent any
  
   stages {
     stage ('Initialize') {
