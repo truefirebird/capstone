@@ -1,5 +1,5 @@
 #hadolint ignore=DL3006
-FRO nginx
+FROM nginx
 
 ## Step 1:
 RUN rm /usr/share/nginx/html/index.html
