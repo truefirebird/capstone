@@ -17,10 +17,10 @@ pipeline {
       steps {
         sh '''
        cd blue
-        docker run --rm -i hadolint/hadolint < Dockerfile
+        docker run --rm -i hadolint/hadolint:latest < Dockerfile
        cd ..
        cd green
-        docker run --rm -i hadolint/hadolint < Dockerfile'''
+        docker run --rm -i hadolint/hadolint:latest < Dockerfile'''
       }
     } 
     
