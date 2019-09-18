@@ -3,7 +3,7 @@ pipeline {
     registry = "anandraman7978/testblueimage"
     registryCredential = 'anandraman7978'
   }
-  agent any
+  agent
   stages {
     stage('Cloning Git') {
       steps {
