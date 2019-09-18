@@ -7,20 +7,22 @@ pipeline {
   agent any
 
   stages {
-    stage ('Initialize') {
-      steps {
-        sh '''
-        chmod 777 pipelint.sh
-        ./pipelint.sh'''
-      }
-    } 
-       
+        
     stage('Cloning Git') {
       steps {
         git 'https://github.com/anandraman7978/capstone.git'
       }
     }
-    
+    stage ('Initialize') {
+      steps {
+        sh '''
+       cd blue
+       hadolint Dockerfile
+       cd ..
+       cd green
+       hadolint Dockerfile
+      }
+    } 
     stage('Build Docker Image Blue') {
    steps {
     withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'anandraman7978', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
