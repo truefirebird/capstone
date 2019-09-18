@@ -2,9 +2,7 @@ pipeline {
   environment {
     registry = "anandraman7978/testblueimage"
     registryCredential = 'anandraman7978'
-     sh '''
-        chmod 777 pipelint.sh
-        ./pipelint.sh'''
+     
   }
   agent any
  
@@ -17,7 +15,7 @@ pipeline {
       }
     }
     
-    stage('Cloning Git') {
+    stage('Cloning Gi') {
       steps {
         git 'https://github.com/anandraman7978/capstone.git'
       }
