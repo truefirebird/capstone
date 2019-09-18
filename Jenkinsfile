@@ -20,9 +20,11 @@ pipeline {
        hadolint Dockerfile
        cd ..
        cd green
-       hadolint Dockerfile
+       hadolint Dockerfile'''
       }
     } 
+    
+    
     stage('Build Docker Image Blue') {
    steps {
     withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'anandraman7978', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
