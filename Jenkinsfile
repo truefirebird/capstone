@@ -13,7 +13,7 @@ pipeline {
         git 'https://github.com/anandraman7978/capstone.git'
       }
     }
-    stage ('Initialize') {
+    stage ('Linting') {
       steps {
         sh '''
        cd blue
