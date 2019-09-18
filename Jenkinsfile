@@ -3,22 +3,20 @@ pipeline {
     registry = "anandraman7978/testblueimage"
     registryCredential = 'anandraman7978'
   }
-  agent any
-  options {
-    // Only keep the 10 most recent builds
-    buildDiscarder(logRotator(numToKeepStr:'10'))
-  }
+  agent none
+ 
   stages {
-    stage('Cloning Git') {
-      steps {
-        git 'https://github.com/anandraman7978/capstone.git'
-      }
-    }
     stage ('Initialize') {
       steps {
         sh '''
         chmod 777 pipelint.sh
         ./pipelint.sh'''
+      }
+    }
+    
+    stage('Cloning Git') {
+      steps {
+        git 'https://github.com/anandraman7978/capstone.git'
       }
     }
     
