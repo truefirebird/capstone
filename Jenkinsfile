@@ -12,7 +12,7 @@ pipeline {
     }
     stage ('Initialize') {
       steps {
-        echo 'Placeholder.'
+        sh '''./pipelint.sh'''
       }
     }
     
