@@ -5,7 +5,14 @@ pipeline {
      
   }
   agent any
- 
+  stages {
+  stage ('Initialize') {
+      steps {
+        sh '''
+        chmod 777 pipelint.sh
+        ./pipelint.sh'''
+      }
+  } 
   stages {
     stage ('Initialize') {
       steps {
