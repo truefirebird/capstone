@@ -5,18 +5,17 @@ pipeline {
      
   }
   agent any
+
   stages {
-  stage ('Initialize') {
+    stage ('Initialize') {
       steps {
         sh '''
         chmod 777 pipelint.sh
         ./pipelint.sh'''
       }
     } 
-  }
-  stages {
        
-    stag('Cloning Git') {
+    stage('Cloning Git') {
       steps {
         git 'https://github.com/anandraman7978/capstone.git'
       }
