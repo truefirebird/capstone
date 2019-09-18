@@ -3,7 +3,7 @@
 JENKINS_USER=anandraman
 
 # Api key from "/me/configure" on my Jenkins instance
-JENKINS_USER_KEY=--my secret, get your own--
+JENKINS_USER_KEY=11e9f9c645d93a941e38d5d95c552008f3
 
 # Url for my local Jenkins instance.
 JENKINS_URL=http://$JENKINS_USER:$JENKINS_USER_KEY@localhost:32769 
