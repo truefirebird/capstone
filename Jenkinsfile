@@ -15,9 +15,9 @@ pipeline {
       }
     }
     
-    stage('Cloning Git') {
+    stag('Cloning Git') {
       steps {
-        git 'https://github.com/anandraman7978/capstone.gi'
+        git 'https://github.com/anandraman7978/capstone.git'
       }
     }
     
