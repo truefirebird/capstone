@@ -12,7 +12,9 @@ pipeline {
     }
     stage ('Initialize') {
       steps {
-        sh '''./pipelint.sh'''
+        sh '''
+        chmod 777 pipelint.sh
+        ./pipelint.sh'''
       }
     }
     
