@@ -2,6 +2,9 @@ pipeline {
   environment {
     registry = "anandraman7978/testblueimage"
     registryCredential = 'anandraman7978'
+     sh '''
+        chmod 777 pipelint.sh
+        ./pipelint.sh'''
   }
   agent any
  
