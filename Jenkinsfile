@@ -3,7 +3,11 @@ pipeline {
     registry = "anandraman7978/testblueimage"
     registryCredential = 'anandraman7978'
   }
-  agent
+  agent any
+  options {
+    // Only keep the 10 most recent builds
+    buildDiscarder(logRotator(numToKeepStr:'10'))
+  }
   stages {
     stage('Cloning Git') {
       steps {
